@@ -402,18 +402,18 @@ backToTop.addEventListener('click', () => {
 
 // ==================== SCROLL REVEAL ====================
 function initScrollReveal() {
-    const sections = document.querySelectorAll('.section');
+    const revealElements = document.querySelectorAll('[data-reveal]');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('section-visible');
+                entry.target.classList.add('revealed');
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
-    sections.forEach(section => observer.observe(section));
+    revealElements.forEach(el => observer.observe(el));
 }
 
 // ==================== COUNTER ANIMATION ====================
