@@ -1929,18 +1929,6 @@ img { max-width: 100%; height: auto; }
     transform-origin: left;
 }
 
-/* Smooth Reveal for All Sections */
-.section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.section.section-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .hero {
     opacity: 1;
     transform: none;
@@ -2324,25 +2312,6 @@ img { max-width: 100%; height: auto; }
 
 /* ==================== AMMARMUNIR.COM STYLE ANIMATIONS ==================== */
 
-/* Smooth Section Reveal - Stagger Children */
-.section-inner > * {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.section-visible .section-inner > *:nth-child(1) { transition-delay: 0.05s; }
-.section-visible .section-inner > *:nth-child(2) { transition-delay: 0.12s; }
-.section-visible .section-inner > *:nth-child(3) { transition-delay: 0.19s; }
-.section-visible .section-inner > *:nth-child(4) { transition-delay: 0.26s; }
-.section-visible .section-inner > *:nth-child(5) { transition-delay: 0.33s; }
-.section-visible .section-inner > *:nth-child(6) { transition-delay: 0.40s; }
-
-.section-visible .section-inner > * {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Button Arrow Animation */
 .btn-primary svg,
 .btn-secondary svg {
@@ -2404,18 +2373,6 @@ img { max-width: 100%; height: auto; }
 .contact-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 50px rgba(196, 169, 106, 0.08);
-}
-
-/* Section Label Slide In */
-.section-label {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.section-visible .section-label {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 /* Smooth Image Reveal */
