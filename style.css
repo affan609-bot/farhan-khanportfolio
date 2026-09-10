@@ -1584,3 +1584,182 @@ img { max-width: 100%; height: auto; }
     .floating-shapes { display: none; }
     .bg-grid { display: none; }
 }
+
+/* ==================== ANIMATIONS ==================== */
+
+/* Hero elements stagger in */
+.hero-content > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s var(--ease) forwards;
+}
+
+.hero-content > *:nth-child(1) { animation-delay: 0.3s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.45s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.6s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.75s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section titles slide in */
+.section-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s var(--ease);
+}
+
+.section.visible .section-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section label slide in */
+.section-label {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s var(--ease);
+}
+
+.section.visible .section-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stagger grid items */
+.about-grid > *,
+.skills-grid > *,
+.work-grid > *,
+.contact-grid > * {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.7s var(--ease);
+}
+
+.section.visible .about-grid > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.section.visible .about-grid > *:nth-child(2) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+
+.section.visible .skills-grid > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.section.visible .skills-grid > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.section.visible .skills-grid > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+.section.visible .work-grid > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.section.visible .work-grid > *:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.section.visible .work-grid > *:nth-child(3) { transition-delay: 0.19s; opacity: 1; transform: translateY(0); }
+.section.visible .work-grid > *:nth-child(4) { transition-delay: 0.26s; opacity: 1; transform: translateY(0); }
+.section.visible .work-grid > *:nth-child(5) { transition-delay: 0.33s; opacity: 1; transform: translateY(0); }
+.section.visible .work-grid > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+
+.section.visible .contact-grid > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.section.visible .contact-grid > *:nth-child(2) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+
+/* Timeline stagger */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s var(--ease);
+}
+
+.section.visible .timeline-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateX(0); }
+.section.visible .timeline-item:nth-child(2) { transition-delay: 0.25s; opacity: 1; transform: translateX(0); }
+
+/* Certs & diplomas stagger */
+.certs, .diplomas {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s var(--ease) 0.3s;
+}
+
+.section.visible .certs,
+.section.visible .diplomas {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Logo click animation */
+@keyframes logoClick {
+    0% { transform: scale(1); }
+    25% { transform: scale(0.9) rotate(-5deg); }
+    50% { transform: scale(1.2) rotate(3deg); }
+    75% { transform: scale(0.95) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+/* Nav ripple */
+.nav-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(196, 169, 106, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    animation: navRipple 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes navRipple {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+
+/* Work card glow on hover */
+.work-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(196, 169, 106, 0.06), transparent 40%);
+    pointer-events: none;
+}
+
+.work-card:hover::after { opacity: 1; }
+.work-card { position: relative; }
+
+/* Skill tag bounce on hover */
+.skill-tags span {
+    transition: all 0.3s var(--ease) !important;
+}
+
+/* Timeline dot glow */
+.timeline-dot {
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 0 6px rgba(196, 169, 106, 0.2);
+}
+
+/* Stat hover glow */
+.stat:hover {
+    box-shadow: 0 0 30px rgba(196, 169, 106, 0.08);
+}
+
+/* Contact card icon spin on hover */
+.contact-card:hover .contact-card-icon {
+    transform: rotate(10deg) scale(1.1);
+    background: rgba(196, 169, 106, 0.2);
+}
+
+/* Diploma download bounce */
+.diploma-download:hover {
+    animation: downloadBounce 0.4s ease;
+}
+
+@keyframes downloadBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Footer slide */
+.footer {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--ease);
+}
+
+.footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

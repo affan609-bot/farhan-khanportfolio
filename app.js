@@ -268,3 +268,48 @@ document.querySelectorAll('.nav-link').forEach(link => {
         setTimeout(() => ripple.remove(), 600);
     });
 });
+
+// ==================== SCROLL REVEAL SECTIONS ====================
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            sectionObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.section').forEach(s => sectionObserver.observe(s));
+
+// Footer reveal
+const footer = document.querySelector('.footer');
+if (footer) {
+    const footerObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+            footer.classList.add('visible');
+            footerObs.disconnect();
+        }
+    }, { threshold: 0.1 });
+    footerObs.observe(footer);
+}
+
+// ==================== LOGO CLICK ====================
+document.getElementById('logo').addEventListener('click', (e) => {
+    e.preventDefault();
+    const mark = document.querySelector('.logo-mark');
+    mark.style.animation = 'none';
+    mark.offsetHeight;
+    mark.style.animation = 'logoClick 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+});
+
+// ==================== WORK CARD GLOW ====================
+document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        this.style.setProperty('--mouse-x', x + '%');
+        this.style.setProperty('--mouse-y', y + '%');
+    });
+});
